@@ -1,17 +1,9 @@
 """
 The program contains tests for the functions contained in the module 'task1.py'.
-The library 'pytest' was used for testing. To install this resource, type the command into the console:
-
-'pip install pytest'.
 
 The available tests checking the correctness of the 'reverse_int()' function from the 'task1.py' module,
 as well as the cases when the data given as an input has a different data type than int.
 
-Running the tests is possible by typing the command in the terminal:
-
-'pytest task1_test.py'.
-
-This command will execute all tests available in the module 'task1_test.py'.
 """
 
 import pytest
