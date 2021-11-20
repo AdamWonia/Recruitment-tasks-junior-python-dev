@@ -5,7 +5,7 @@ The library 'pytest' was used for testing. To install this resource, type the co
 'pip install pytest'.
 
 The available tests checking the correctness of the 'reverse_int()' function from the 'task1.py' module,
-as well as the cases when the data given as input has a different data type than int.
+as well as the cases when the data given as an input has a different data type than int.
 
 Running the tests is possible by typing the command in the terminal:
 
@@ -20,25 +20,14 @@ from task1 import reverse_int
 
 @pytest.mark.parametrize("input_numb, output_numb", (
         (10, 1),
-        (678543, 345876),
         (2147483647, 7463847412),
         (2147483648, 0),
         (-10, -1),
-        (-147986376, -673689741),
-        (-2147483647, -7463847412),
-        (-2147483648, 0),
-))
-def test_reverse_number_passed(input_numb, output_numb):
-    assert output_numb == reverse_int(input_numb)
-
-
-@pytest.mark.parametrize("input_numb, output_numb", (
-        (123, 132),
-        (2147483648, 8463847412),
         (-2147483648, -8463847412),
+        (-2147483649, 0),
 ))
-def test_reverse_number_failed(input_numb, output_numb):
-    assert not output_numb == reverse_int(input_numb)
+def test_reverse_number(input_numb, output_numb):
+    assert output_numb == reverse_int(input_numb)
 
 
 @pytest.mark.parametrize("input_numb, output_numb", (
@@ -47,6 +36,6 @@ def test_reverse_number_failed(input_numb, output_numb):
         ('ad', 'da'),
         ('-xy', '-yx'),
 ))
-def test_reverse_error(input_numb, output_numb):
+def test_reverse_number_invalid_input(input_numb, output_numb):
     with pytest.raises(Exception):
         assert output_numb == reverse_int(input_numb)

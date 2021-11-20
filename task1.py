@@ -31,12 +31,13 @@ The module 'task1_test.py' contains tests for the functions in this programme.
 # This function returns only int from input
 def input_int():
     exit_flag = True
+    n = 0
     while exit_flag:
         try:
             n = int(input('Input: '))
             exit_flag = False
         except ValueError:
-            print("Wrong input number! Type integer...")
+            print("Wrong input number! Insert integer...")
 
     return n
 
@@ -44,14 +45,10 @@ def input_int():
 # This function reverses a given number
 def reverse_int(n):
     # Check the sign of a number:
-    if n > 0:
-        sign = ''
-    else:
-        sign = '-'
+    sign = '' if n > 0 else '-'
     # Check overflow of number:
-    if abs(n) > ((1 << 31) - 1):
-        rev_n = 0
-    else:
+    rev_n = 0
+    if -2 ** 31 <= n <= 2 ** 31 - 1:
         rev_n = int(sign + str(abs(n))[::-1])
 
     return rev_n

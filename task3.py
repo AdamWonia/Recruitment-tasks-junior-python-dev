@@ -56,68 +56,64 @@ def justify(words, max_width):
     sub_results = []
     final_results = []
 
-    try:
-        # Splitting words:
-        split_words = words.split()
+    # Splitting words:
+    split_words = words.split()
 
-        # Adding words to row if max_width is not exceeded:
-        for word in split_words:
+    # Adding words to row if max_width is not exceeded:
+    for word in split_words:
+        check.append(word)
+        min_spaces = len(check) - 1
+        if len("".join(check)) + min_spaces < max_width:
+            row.append(word)
+        else:
+            sub_results.append(row)
+            row = []
+            row.append(word)
+            check = []
             check.append(word)
-            min_spaces = len(check) - 1
-            if len("".join(check)) + min_spaces < max_width:
-                row.append(word)
-            else:
-                sub_results.append(row)
-                row = []
-                row.append(word)
-                check = []
-                check.append(word)
 
-        sub_results.append(row)
+    sub_results.append(row)
 
-        for result in sub_results:
-            # Merge all words in result
-            row_merged = "".join(result)
+    for result in sub_results:
+        # Merge all words in result
+        row_merged = "".join(result)
 
-            # Number of spaces to fill between words:
-            numb_space_fill = max_width - len("".join(row_merged))
+        # Number of spaces to fill between words:
+        numb_space_fill = max_width - len("".join(row_merged))
 
-            # Min Number of spaces between words in row:
-            min_spaces = len(result) - 1
+        # Min Number of spaces between words in row:
+        min_spaces = len(result) - 1
 
-            # Calculate the number of spaces between each word:
-            tab = []
+        # Calculate the number of spaces between each word:
+        tab = []
 
-            # If there is one space needed -> add one long space between words:
-            if min_spaces == 1:
-                tab.append(numb_space_fill)
-            # If there is more than one space needed -> add few spaces between words:
-            if min_spaces > 1:
-                x = math.ceil(numb_space_fill / min_spaces)
-                for i in range(min_spaces):
-                    tab.append(x)
-                    x = numb_space_fill - tab[i]
-                    x = math.ceil(x / min_spaces)
+        # If there is one space needed -> add one long space between words:
+        if min_spaces == 1:
+            tab.append(numb_space_fill)
+        # If there is more than one space needed -> add few spaces between words:
+        if min_spaces > 1:
+            x = math.ceil(numb_space_fill / min_spaces)
+            for i in range(min_spaces):
+                tab.append(x)
+                x = numb_space_fill - tab[i]
+                x = math.ceil(x / min_spaces)
 
-                # If characters are missing in a row -> add as many spaces:
-                chech_sum = sum(tab)
-                if chech_sum < numb_space_fill:
-                    diff = numb_space_fill - sum(tab)
-                    tab[-1] += diff
+            # If characters are missing in a row -> add as many spaces:
+            chech_sum = sum(tab)
+            if chech_sum < numb_space_fill:
+                diff = numb_space_fill - sum(tab)
+                tab[-1] += diff
 
-            tab.append(0)
+        tab.append(0)
 
-            # Getting justified text:
-            row_justified = []
+        # Getting justified text:
+        row_justified = []
 
-            # Concatenate words and spaces and place it into final_results:
-            for (word, space) in zip(result, tab):
-                row_justified.append(word + space * ' ')
+        # Concatenate words and spaces and place it into final_results:
+        for (word, space) in zip(result, tab):
+            row_justified.append(word + space * ' ')
 
-            final_results.append("".join(row_justified))
-
-    except Exception as e:
-        print("Something went wrong, please try again.", e)
+        final_results.append("".join(row_justified))
 
     return final_results
 
@@ -129,7 +125,10 @@ def print_results(results):
 
 
 if __name__ == "__main__":
+    # Program does not work correctly
+    # The last line should not be justified
+    # It works in some cases, but not in all
+
     words = "Hey there mate, it’s nice to finally meet you!"
     max_width = 16
-
     print_results(justify(words, max_width))
