@@ -1,18 +1,9 @@
 """
 The program contains tests for the functions contained in the module 'task2.py'.
-The library 'pytest' was used for testing. To install this resource, type the command into the console:
-
-'pip install pytest'.
 
 The available tests checking the correctness of the 'combinations()' function from the 'task2.py' module.
 The remaining tests check the correctness of the returned letter combinations created from the input
 variable 'digits', including cases where the input data is incorrect.
-
-Running the tests is possible by typing the command in the terminal:
-
-'pytest task2_test.py'.
-
-This command will execute all tests available in the module 'task2_test.py'.
 """
 
 import pytest
