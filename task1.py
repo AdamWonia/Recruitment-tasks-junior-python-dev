@@ -12,6 +12,7 @@ Example 2:
 Input: x = -954
 Output: -459
 
+
 The module 'task1_test.py' contains tests for the functions in this programme.
 """
 
@@ -20,7 +21,6 @@ The module 'task1_test.py' contains tests for the functions in this programme.
 def input_int():
     """
     Function takes integer number from standard input
-
     :return: returns the specified integer or displays an error
     """
     exit_flag = True
@@ -40,7 +40,7 @@ def reverse_int(n):
     """
     This function reverses the digit order of the input number n including its sign.
     param n: the given integer
-    return: returns the integer with the reversed digit order or zero
+    return: an integer with the reversed digit order or zero
     """
     # Check the sign of a number:
     sign = '' if n > 0 else '-'

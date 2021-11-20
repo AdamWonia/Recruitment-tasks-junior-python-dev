@@ -30,18 +30,6 @@ Input: digits = "2"
 Output: ["a", "b","c"]
 
 
-There is a 'Solution' class in the program that contains a dictionary containing keyboard numbers
-with corresponding letters.
-This class contains the 'combinations()' method, which, via the internal 'solve()' method, finds all
-combinations of letters. This method uses a recursive call to itself.
-
-In the main section of the program, an object of class 'Solution' is created and the method 'combinations()'
-is called on behalf of this object with the input argument 'digits'.
-
-The program is started by pressing the Run button in the programming environment or by typing commands in the console:
-
-'python task2.py'
-
 The module 'task2_test.py' contains tests for the class 'Solution' in this programme.
 """
 
@@ -54,6 +42,12 @@ dial_dict = {
 
 
 def combinations(digits):
+    """
+    Function using recursive internal solve() function finds all combinations of
+    letters corresponding to given dial digits
+    :param digits: string containing digits
+    :return: list with all letters combinations
+    """
     result = []
 
     def solve(current_str, i):

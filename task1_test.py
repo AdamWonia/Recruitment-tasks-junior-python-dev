@@ -3,7 +3,6 @@ The program contains tests for the functions contained in the module 'task1.py'.
 
 The available tests checking the correctness of the 'reverse_int()' function from the 'task1.py' module,
 as well as the cases when the data given as an input has a different data type than int.
-
 """
 
 import pytest

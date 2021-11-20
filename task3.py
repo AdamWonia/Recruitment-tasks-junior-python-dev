@@ -28,20 +28,6 @@ Output:
 Note: Please keep in mind that the last line is aligned left.
 
 
-There are two functions in the programme. The first one 'justify()' is used to align the string given as input,
-where the number of characters per row is determined by the 'max_width' parameter. Second function 'print_results()'
-is used to display results in console.
-
-In the main section of the program the input arguments to the 'justify' function are given.
-These are: the string to be aligned 'words', and the maximum number of characters per row 'max_width'.
-
-The result returned by the 'justify()' function goes to the input of the 'print_result()' function,
-which displays the results in the console.
-
-The program is started by pressing the Run button in the programming environment or by typing commands in the console:
-
-'python task3.py'
-
 The module 'task3_test.py' contains tests for the functions in this programme.
 """
 
@@ -50,6 +36,12 @@ import pdb, math
 
 # Function to justify the given text:
 def justify(words, max_width):
+    """
+    Function returns list with justified rows of given phrase
+    :param words: phrase to be justified
+    :param max_width: number of characters per line
+    :return: list with justified rows
+    """
     # Variables used in code:
     row = []
     check = []
@@ -120,6 +112,11 @@ def justify(words, max_width):
 
 # Function to show results:
 def print_results(results):
+    """
+    Function used to print all elements in given list
+    :param results: list
+    :return: prints all elements in given list
+    """
     for element in results:
         print(element)
 
