@@ -125,7 +125,10 @@ def print_results(results):
 
 
 if __name__ == "__main__":
+    # Program does not work correctly
+    # The last line should not be justified
+    # It works in some cases, but not in all
+
     words = "Hey there mate, it’s nice to finally meet you!"
     max_width = 16
-
     print_results(justify(words, max_width))

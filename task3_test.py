@@ -30,11 +30,3 @@ from task3 import justify
 def test_justify_text(words, max_width, result):
     print(justify(words, max_width))
     assert result == justify(words, max_width)
-
-
-@pytest.mark.parametrize("words, max_width, result", (
-        (113, 16, []),
-        (3.44, 10, [])
-))
-def test_justify_invalid_input(words, max_width, result):
-    assert result == justify(words, max_width)
