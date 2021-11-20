@@ -1,12 +1,10 @@
 """
-The program contains tests for the class 'Solution' contained in the module 'task2.py'.
+The program contains tests for the functions contained in the module 'task2.py'.
 The library 'pytest' was used for testing. To install this resource, type the command into the console:
 
 'pip install pytest'.
 
-The available tests check the correct functionality of the 'Solution' class. The first test checks that an object of
-this class is correctly created.
-
+The available tests checking the correctness of the 'combinations()' function from the 'task2.py' module.
 The remaining tests check the correctness of the returned letter combinations created from the input
 variable 'digits', including cases where the input data is incorrect.
 
@@ -18,17 +16,7 @@ This command will execute all tests available in the module 'task2_test.py'.
 """
 
 import pytest
-from task2 import Solution
-
-
-@pytest.fixture(scope='function')
-def solution():
-    solution = Solution()
-    return solution
-
-
-def test_initialization(solution):
-    assert solution
+from task2 import combinations
 
 
 @pytest.mark.parametrize("digits, combs", (
@@ -42,16 +30,8 @@ def test_initialization(solution):
         ("2", ['a', 'b', 'c']),
         ("", [])
 ))
-def test_combinations_passed(solution, digits, combs):
-    assert combs == solution.combinations(digits)
-
-
-@pytest.mark.parametrize("digits, combs", (
-        ("32", ['ad', 'ae', 'af', 'bd', 'be', 'bf', 'cd', 'ce', 'cf']),
-        ("45", ['jg', 'jh', 'ji', 'kg', 'kh', 'ki', 'lg', 'lh', 'li']),
-))
-def test_combinations_failed(solution, digits, combs):
-    assert not combs == solution.combinations(digits)
+def test_combinations(digits, combs):
+    assert combs == combinations(digits)
 
 
 @pytest.mark.parametrize("digits, combs", (
@@ -59,5 +39,6 @@ def test_combinations_failed(solution, digits, combs):
         ("12", []),
         ("2a", []),
 ))
-def test_combinations_invalid_input(solution, digits, combs):
-    assert combs == solution.combinations(digits)
+def test_combinations_invalid_input(digits, combs):
+    with pytest.raises(Exception):
+        assert combs == combinations(digits)
