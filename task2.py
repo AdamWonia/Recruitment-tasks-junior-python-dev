@@ -45,37 +45,31 @@ The program is started by pressing the Run button in the programming environment
 The module 'task2_test.py' contains tests for the class 'Solution' in this programme.
 """
 
+# Dictionary with phone numbers with corresponding letters:
+dial_dict = {
+    '2': 'abc', '3': 'def',
+    '4': 'ghi', '5': 'jkl', '6': 'mno',
+    '7': 'pqrs', '8': 'tuv', '9': 'wxyz'
+}
 
-class Solution:
-    # Dictionary with phone numbers with corresponding letters:
-    dial_dict = {
-        '2': 'abc', '3': 'def',
-        '4': 'ghi', '5': 'jkl', '6': 'mno',
-        '7': 'pqrs', '8': 'tuv', '9': 'wxyz'
-    }
 
-    # Method finds all combination:
-    def combinations(self, digits):
-        result = []
+def combinations(digits):
+    result = []
 
-        def solve(current_str, i):
-            if len(current_str) == len(digits):
-                result.append(current_str)
-                return
-            for c in self.dial_dict[digits[i]]:
-                solve(current_str + c, i + 1)
+    def solve(current_str, i):
+        if len(current_str) == len(digits):
+            result.append(current_str)
+            return
+        for c in dial_dict[digits[i]]:
+            solve(current_str + c, i + 1)
 
-        # Start looking for combinations if 'digits' is not empty:
-        if digits:
-            try:
-                solve("", 0)
-            except Exception as e:
-                print("Something went wrong, please try again.", e)
+    # Start looking for combinations if 'digits' is not empty:
+    if digits:
+        solve("", 0)
 
-        return result
+    return result
 
 
 if __name__ == '__main__':
-    s1 = Solution()
     digits = "23"
-    print(s1.combinations(digits))
+    print(combinations(digits))
